@@ -1,0 +1,339 @@
+--------------
+LOAD DATA INFILE '/var/tmp/moviedata.txt' INTO TABLE movie FIELDS TERMINATED BY ','
+--------------
+
+--------------
+INSERT INTO movie VALUES('999','The Room','2007')
+--------------
+
+--------------
+INSERT INTO customer VALUES('Laura','Reid','222','F','lreid@uwo.ca')
+--------------
+
+--------------
+INSERT INTO customer VALUES('Ben','Dumais','223','M','bdumais@uwo.ca')
+--------------
+
+--------------
+INSERT INTO customer VALUES('Bill','Clinton','224','M','billy@prez.com')
+--------------
+
+--------------
+INSERT INTO customer VALUES('Hillary','Clinton','225','F','nextprez@prez.com')
+--------------
+
+--------------
+INSERT INTO customer VALUES('Donald','Trump','226','M','nextprezalso@prez.com')
+--------------
+
+--------------
+INSERT INTO customer VALUES('Chelsea','Clinton','227','F','firstdaug@prez.com')
+--------------
+
+--------------
+INSERT INTO customer VALUES('Ivanka','Trump','228','F','apprentice@trump.com')
+--------------
+
+--------------
+INSERT INTO customer VALUES('Sandra','Bullock','229','F','sandy@blindside.com')
+--------------
+
+--------------
+SELECT * FROM customer
+--------------
+
+fname   lname   id      sex     email
+Laura   Reid    222     F       lreid@uwo.ca
+Ben     Dumais  223     M       bdumais@uwo.ca
+Bill    Clinton 224     M       billy@prez.com
+Hillary Clinton 225     F       nextprez@prez.com
+Donald  Trump   226     M       nextprezalso@prez.com
+Chelsea Clinton 227     F       firstdaug@prez.com
+Ivanka  Trump   228     F       apprentice@trump.com
+Sandra  Bullock 229     F       sandy@blindside.com
+--------------
+INSERT INTO movie_genre VALUES('100','Action')
+--------------
+
+--------------
+INSERT INTO movie_genre VALUES('100','SciFi')
+--------------
+
+--------------
+INSERT INTO movie_genre VALUES('101','Animated')
+--------------
+
+--------------
+INSERT INTO movie_genre VALUES('102','Action')
+--------------
+
+--------------
+INSERT INTO movie_genre VALUES('103','Romance')
+--------------
+
+--------------
+INSERT INTO movie_genre VALUES('104','Action')
+--------------
+
+--------------
+INSERT INTO movie_genre VALUES('104','SciFi')
+--------------
+
+--------------
+INSERT INTO movie_genre VALUES('105','Action')
+--------------
+
+--------------
+INSERT INTO movie_genre VALUES('105','SciFi')
+--------------
+
+--------------
+INSERT INTO movie_genre VALUES('106','Drama')
+--------------
+
+--------------
+INSERT INTO movie_genre VALUES('107','Comedy')
+--------------
+
+--------------
+INSERT INTO movie_genre VALUES('108','Action')
+--------------
+
+--------------
+INSERT INTO movie_genre VALUES('109','Comedy')
+--------------
+
+--------------
+INSERT INTO movie_genre VALUES('110','Comedy')
+--------------
+
+--------------
+INSERT INTO movie_genre VALUES('110','Romance')
+--------------
+
+--------------
+INSERT INTO movie_genre VALUES('111','SciFi')
+--------------
+
+--------------
+INSERT INTO movie_genre VALUES('111','Action')
+--------------
+
+--------------
+INSERT INTO movie_genre VALUES('111','Comedy')
+--------------
+
+--------------
+INSERT INTO movie_genre VALUES('999','Comedy')
+--------------
+
+--------------
+INSERT INTO movie_genre VALUES('999','Cult Classic')
+--------------
+
+--------------
+SELECT * FROM movie_genre
+--------------
+
+m_id    genre
+100     Action
+100     SciFi
+101     Animated
+102     Action
+103     Romance
+104     Action
+104     SciFi
+105     Action
+105     SciFi
+106     Drama
+107     Comedy
+108     Action
+109     Comedy
+110     Comedy
+110     Romance
+111     Action
+111     Comedy
+111     SciFi
+999     Comedy
+999     Cult Classic
+--------------
+INSERT INTO room VALUES(1,30)
+--------------
+
+--------------
+INSERT INTO room VALUES(2,5)
+--------------
+
+--------------
+INSERT INTO room VALUES(3,100)
+--------------
+
+--------------
+INSERT INTO room VALUES(4,30)
+--------------
+
+--------------
+INSERT INTO room VALUES(5,6)
+--------------
+
+--------------
+SELECT * FROM room
+--------------
+
+number  capacity
+1       30
+2       5
+3       100
+4       30
+5       6
+--------------
+INSERT INTO showing VALUES('333','2015-2-11','9:30 PM',1,'100')
+--------------
+
+--------------
+INSERT INTO showing VALUES('334','2015-2-11','7:30 PM',2,'100')
+--------------
+
+--------------
+INSERT INTO showing VALUES('335','2015-2-11','7:00 PM',3,'101')
+--------------
+
+--------------
+INSERT INTO showing VALUES('337','2015-3-12','7:00 PM',1,'102')
+--------------
+
+--------------
+INSERT INTO showing VALUES('338','2015-3-12','9:00 PM',1,'103')
+--------------
+
+--------------
+INSERT INTO showing VALUES('339','2015-3-13','7:00 PM',2,'103')
+--------------
+
+--------------
+INSERT INTO showing VALUES('340','2015-3-20','7:00 PM',1,'103')
+--------------
+
+--------------
+INSERT INTO showing VALUES('341','2015-3-20','9:00 PM',1,'104')
+--------------
+
+--------------
+INSERT INTO showing VALUES('346','2015-3-22','8:30 PM',2,'107')
+--------------
+
+--------------
+INSERT INTO showing VALUES('345','2015-3-22','9:00 PM',3,'108')
+--------------
+
+--------------
+INSERT INTO showing VALUES('342','2015-3-20','7:00 PM',2,'109')
+--------------
+
+--------------
+INSERT INTO showing VALUES('344','2015-3-21','7:00 PM',1,'110')
+--------------
+
+--------------
+INSERT INTO showing VALUES('347','2015-3-23','10:00 PM',1,'110')
+--------------
+
+--------------
+INSERT INTO showing VALUES('336','2015-2-11','9:00 PM',2,'111')
+--------------
+
+--------------
+INSERT INTO showing VALUES('350','2015-3-19','7:30 PM',1,'999')
+--------------
+
+--------------
+SELECT * FROM showing
+--------------
+
+id      show_date       show_time       room    m_id
+333     2015-02-11      09:30:00        1       100
+334     2015-02-11      07:30:00        2       100
+335     2015-02-11      07:00:00        3       101
+336     2015-02-11      09:00:00        2       111
+337     2015-03-12      07:00:00        1       102
+338     2015-03-12      09:00:00        1       103
+339     2015-03-13      07:00:00        2       103
+340     2015-03-20      07:00:00        1       103
+341     2015-03-20      09:00:00        1       104
+342     2015-03-20      07:00:00        2       109
+344     2015-03-21      07:00:00        1       110
+345     2015-03-22      09:00:00        3       108
+346     2015-03-22      08:30:00        2       107
+347     2015-03-23      10:00:00        1       110
+350     2015-03-19      07:30:00        1       999
+--------------
+INSERT INTO watches VALUES('222','333','5',4)
+--------------
+
+--------------
+INSERT INTO watches VALUES('222','340','1',12)
+--------------
+
+--------------
+INSERT INTO watches VALUES('222','334','3',10)
+--------------
+
+--------------
+INSERT INTO watches VALUES('222','346','4',5)
+--------------
+
+--------------
+INSERT INTO watches VALUES('223','334','5',30)
+--------------
+
+--------------
+INSERT INTO watches VALUES('223','340','1',5)
+--------------
+
+--------------
+INSERT INTO watches VALUES('224','334','4',20)
+--------------
+
+--------------
+INSERT INTO watches VALUES('226','334','2',100)
+--------------
+
+--------------
+INSERT INTO watches VALUES('227','334','1',5)
+--------------
+
+--------------
+INSERT INTO watches VALUES('229','347','5',12)
+--------------
+
+--------------
+INSERT INTO watches VALUES('229','334','3',5)
+--------------
+
+--------------
+INSERT INTO watches VALUES('223','350','4',8)
+--------------
+
+--------------
+SELECT * FROM watches
+--------------
+
+c_id    s_id    rating  price
+222     333     5       4
+222     334     3       10
+222     340     1       12
+222     346     4       5
+223     334     5       30
+223     340     1       5
+223     350     4       8
+224     334     4       20
+226     334     2       100
+227     334     1       5
+229     334     3       5
+229     347     5       12
+--------------
+UPDATE customer SET fname='Sue' WHERE id = '228'
+--------------
+
+
+

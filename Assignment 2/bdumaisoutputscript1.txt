@@ -1,0 +1,58 @@
+--------------
+show databases
+--------------
+
+Database
+information_schema
+bdumaisdb
+mysql
+performance_schema
+testdb
+--------------
+drop database if exists bdumaisdb
+--------------
+
+--------------
+create database bdumaisdb
+--------------
+
+--------------
+show tables
+--------------
+
+--------------
+create table customer (fname VARCHAR(30) NOT NULL, lname VARCHAR(30) NOT NULL, id char(3), sex char(1), email VARCHAR(30), PRIMARY KEY (id))
+--------------
+
+--------------
+create table movie (id char(3), name VARCHAR(50) NOT NULL, year char(4), PRIMARY KEY (id))
+--------------
+
+--------------
+create table movie_genre (m_id char(3), genre VARCHAR(30), FOREIGN KEY (m_id) REFERENCES movie(id), PRIMARY KEY (m_id, genre))
+--------------
+
+--------------
+create table room (number TINYINT, capacity TINYINT, PRIMARY KEY (number))
+--------------
+
+--------------
+create table showing (id char(3), show_date DATE, show_time TIME, room TINYINT, m_id char(3), FOREIGN KEY(room) REFERENCES room(number) ON DELETE RESTRICT, FOREIGN KEY(m_id) REFERENCES movie(id), PRIMARY KEY(id))
+--------------
+
+--------------
+create table watches (c_id char(3), s_id char(3), rating char(1), price TINYINT, PRIMARY KEY(c_id,s_id), FOREIGN KEY(c_id) REFERENCES customer(id) ON DELETE CASCADE, FOREIGN KEY(s_id) REFERENCES showing(id))
+--------------
+
+--------------
+show tables
+--------------
+
+Tables_in_bdumaisdb
+customer
+movie
+movie_genre
+room
+showing
+watches
+                 

@@ -1,0 +1,12 @@
+USE bdumaisdb;
+CREATE VIEW cust_summary AS SELECT fname,lname,name AS movie_name,AVG(rating) as avg_rating FROM customer,watches,showing,movie WHERE watches.c_id=customer.id AND watches.s_id=showing.id AND showing.m_id=movie.id GROUP BY lname;
+SELECT * FROM cust_summary;
+SELECT * FROM customer;
+DELETE FROM customer WHERE lname="Trump";
+SELECT * FROM customer;
+SELECT * FROM room;
+DELETE FROM room WHERE number=3;
+SELECT * FROM room;
+DELETE FROM showing WHERE room=3;
+DELETE FROM room WHERE number=3;
+SELECT * FROM room;

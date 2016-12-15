@@ -1,0 +1,15 @@
+SELECT lname FROM customer;
+SELECT DISTINCT lname FROM customer;
+SELECT fname,lname,email FROM customer WHERE sex="M";
+SELECT name FROM movie,movie_genre WHERE movie_genre.m_id=movie.id AND genre="Comedy";
+SELECT name,year FROM movie WHERE year LIKE "199%" ORDER BY year;
+SELECT DATE_FORMAT(show_date,'%M-%d-%Y') AS show_date,TIME_FORMAT(show_time,'%r') AS show_time,capacity FROM showing,room,movie WHERE movie.name="Star Wars" AND movie.id=showing.m_id AND showing.room=room.number;
+SELECT name FROM movie WHERE name LIKE "%The%";
+SELECT fname,lname,name FROM customer,showing,watches,movie WHERE watches.c_id=customer.id AND watches.s_id=showing.id AND showing.m_id=movie.id AND showing.show_date>="2015-03-1";
+SELECT DISTINCT fname,lname FROM customer,watches,showing,movie_genre WHERE watches.c_id=customer.id AND watches.s_id=showing.id AND showing.m_id=movie_genre.m_id AND movie_genre.genre="SciFi";
+SELECT name FROM movie WHERE id NOT IN (SELECT m_id FROM showing);
+SELECT name FROM movie,showing WHERE movie.id=showing.m_id AND showing.id NOT IN (SELECT s_id FROM watches);
+SELECT name FROM movie WHERE id NOT IN (Select m_id FROM showing) UNION SELECT name FROM movie,showing WHERE movie.id=showing.m_id AND showing.id NOT IN (SELECT s_id FROM watches);
+SELECT year,COUNT(*) AS movies FROM movie GROUP BY year;
+SELECT SUM(price) AS sales FROM watches;
+SELECT s_id AS showing,COUNT(c_id) AS tickets_sold,capacity AS room_capacity FROM watches,showing,room WHERE watches.s_id=showing.id AND showing.room=room.number GROUP BY s_id;

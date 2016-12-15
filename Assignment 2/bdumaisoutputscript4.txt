@@ -1,0 +1,85 @@
+ERROR 1451 (23000) at line 8: Cannot delete or update a parent row: a foreign key constraint fails (`bdumaisdb`.`showing`, CONSTRAINT `showing_ibfk_1` FOREIGN KEY (`room`) REFERENCES `room` (`number`))
+--------------
+CREATE VIEW cust_summary AS SELECT fname,lname,name AS movie_name,AVG(rating) as avg_rating FROM customer,watches,showing,movie WHERE watches.c_id=customer.id AND watches.s_id=showing.id AND showing.m_id=movie.id GROUP BY lname
+--------------
+
+--------------
+SELECT * FROM cust_summary
+--------------
+
+fname   lname   movie_name      avg_rating
+Sandra  Bullock Star Wars       4
+Bill    Clinton Star Wars       2.5
+Ben     Dumais  Star Wars       3.3333333333333335
+Laura   Reid    Star Wars       3.25
+Donald  Trump   Star Wars       2
+--------------
+SELECT * FROM customer
+--------------
+
+fname   lname   id      sex     email
+Laura   Reid    222     F       lreid@uwo.ca
+Ben     Dumais  223     M       bdumais@uwo.ca
+Bill    Clinton 224     M       billy@prez.com
+Hillary Clinton 225     F       nextprez@prez.com
+Donald  Trump   226     M       nextprezalso@prez.com
+Chelsea Clinton 227     F       firstdaug@prez.com
+Sue     Trump   228     F       apprentice@trump.com
+Sandra  Bullock 229     F       sandy@blindside.com
+--------------
+DELETE FROM customer WHERE lname="Trump"
+--------------
+
+--------------
+SELECT * FROM customer
+--------------
+
+fname   lname   id      sex     email
+Laura   Reid    222     F       lreid@uwo.ca
+Ben     Dumais  223     M       bdumais@uwo.ca
+Bill    Clinton 224     M       billy@prez.com
+Hillary Clinton 225     F       nextprez@prez.com
+Chelsea Clinton 227     F       firstdaug@prez.com
+Sandra  Bullock 229     F       sandy@blindside.com
+--------------
+SELECT * FROM room
+--------------
+
+number  capacity
+1       30
+2       5
+3       100
+4       30
+5       6
+--------------
+DELETE FROM room WHERE number=3
+--------------
+
+--------------
+SELECT * FROM room
+--------------
+
+number  capacity
+1       30
+2       5
+3       100
+4       30
+5       6
+--------------
+DELETE FROM showing WHERE room=3
+--------------
+
+--------------
+DELETE FROM room WHERE number=3
+--------------
+
+--------------
+SELECT * FROM room
+--------------
+
+number  capacity
+1       30
+2       5
+4       30
+5       6
+
